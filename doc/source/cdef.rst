@@ -239,7 +239,7 @@ ffi.dlopen(): 以ABI模式加载库
 对于可选的 ``flags`` 参数， 参见 ``man dlopen`` (在Windows上被忽略)。 它默认为 ``ffi.RTLD_NOW``。
 
 此函数返回一个"library"对象，当它超出范围时会被关闭。确保在需要时保留库对象。 (或者， out-of-line FFI有一个方法
-``ffi.dlclose(lib)``.)
+``ffi.dlclose(lib)``。)
 
 .. _dlopen-note:
 
@@ -527,7 +527,7 @@ ffi.verify(): in-line API模式
 ``cffi.verifier.cleanup_tmpdir()`` 的调用。 或者，您可以手动删除整个 ``__pycache__`` 目录。
 
 另一个缓存目录可以作为 ``verify()`` 的 ``tmpdir`` 参数，通过环境变量 ``CFFI_TMPDIR``，或者在调用 ``verify`` 之前调用 ``cffi.verifier.set_tmpdir(path)``。
-.
+。
 
 
 从CFFI 0.9升级到CFFI 1.0
@@ -545,7 +545,7 @@ CFFI 1.0是向后兼容的，但考虑转向1.0中的新out-of-line方法仍然�
     ffi.cdef("stuff")
     lib = ffi.dlopen("libpath")
 
-and *如果* "stuff" 部分足够大以至于导入时间是一个问题，那么按照 `out-of-line但仍然是ABI模式`__
+*如果* "stuff" 部分足够大以至于导入时间是一个问题，那么按照 `out-of-line但仍然是ABI模式`__
 的描述重写它。 可选， 另请参见 `setuptools集成`__ 段落。
 
 .. __: out-of-line-abi_

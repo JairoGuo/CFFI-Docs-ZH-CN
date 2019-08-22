@@ -226,7 +226,7 @@
 * 实际执行主程序时，需要找到
   ``libmy_plugin.so`` 以及 ``libpython27.so`` 或 ``libpypy-c.so``。
   对于PyPy，解压缩PyPy发行版，并在 ``bin`` 子目录中获得 ``libpypy-c.so`` 的完整目录结构，或者在顶级目录中的Windows  ``pypy-c.dll`` 上获取完整目录结构; 你不能移动这个文件，只是指向它。 指向它的一种方法是使用一些环境变量运行主程序:
-  Linux上的 ``LD_LIBRARY_PATH=/some/path/to/libpypy``，OS / X上的
+  Linux上的 ``LD_LIBRARY_PATH=/some/path/to/libpypy``，OS/X上的
   ``DYLD_LIBRARY_PATH=/some/path/to/libpypy``。
 
 * 如果使用内部硬编码的路径编译 ``libmy_plugin.so``，则可以避免 ``LD_LIBRARY_PATH`` 问题。  在Linux中，这是由 ``gcc -Wl,-rpath=/some/path`` 完成的。 你可以把这个选项放在 ``ffibuilder.set_source("my_plugin", ...,
