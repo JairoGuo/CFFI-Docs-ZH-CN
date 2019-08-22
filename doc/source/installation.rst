@@ -32,7 +32,7 @@ CFFI的核心速度优于ctypes，如果使用1.0之后的功能，则意味着�
 * pycparser >= 2.06: https://github.com/eliben/pycparser 
   ( ``pip install cffi`` 自动跟踪).
 
-* CFFI 自身 需要`py.test`_ 来运行测试。
+* CFFI 自身 需要 `py.test`_ 来运行测试。
 
 .. _`py.test`: http://pypi.python.org/pypi/pytest
 

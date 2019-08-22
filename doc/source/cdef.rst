@@ -73,7 +73,7 @@
 .. _distutils-setuptools:
 
 * 最后，在编写 ``setup.py`` 时，您可以(但不必) 使用CFFI的 **Distutils** 或
-  **Setuptools integration** 。 对于
+  **Setuptools 集成** 。 对于
   Distutils (仅在 out-of-line API 模式):
 
   .. code-block:: python
@@ -129,7 +129,7 @@
 
 请注意，确实存在一些小的差异: 值得注意的是，从 ``from _foo import
 ffi`` 返回一个用C语言编写的类型的对象，它不允许你向它添加随机属性 (它也没有Python版本的所有下划线前缀内部属性)。
-类似地，除了对全局变量的写入之外，C版本返回的 ``lib`` 对象是只读的 此外，``lib.__dict__`` 在版本1.2之前不起作用，或者如果 ``lib``恰好声明一个名为 ``__dict__`` 的名称 (使用 ``dir(lib)`` 代替)。 T对于连续版本中添加的 ``lib.__class__``， ``lib.__all__`` 和 ``lib.__name__`` 也是如此。
+类似地，除了对全局变量的写入之外，C版本返回的 ``lib`` 对象是只读的 此外，``lib.__dict__`` 在版本1.2之前不起作用，或者如果 ``lib`` 恰好声明一个名为 ``__dict__`` 的名称 (使用 ``dir(lib)`` 代替)。 对于连续版本中添加的 ``lib.__class__``， ``lib.__all__`` 和 ``lib.__name__`` 也是如此。
 
 
 .. _cdef:
@@ -175,7 +175,7 @@ with a type tag``。 如果确实如此，请将其报告为错误。)
 可以多次调用 ``ffi.cdef()``。请注意，很多时候调用 ``ffi.cdef()`` 的速度很慢，主要考虑in-line模式.
 
 ``ffi.cdef()`` 调用可选地接受一个额外参数: ``packed`` 或 ``pack``。 如果传递 ``packed=True``，则在此cdef中声明的所有结构都是"packed"的。 (如果您需要packed和非packed结构，请按顺序使用多个cdef。)  这与GCC中的 ``__attribute__((packed))`` 的含义相似。 它指定所有结构字段的对齐方式应为一个字节。 (请注意，到目前为止，packed属性对位字段没有影响，这意味着它们可能与GCC上的packed方式不同。
-此外，这对使用 ``"...;"``声明的结构没有影响，稍后会详细介绍 `让C编译器填补空白`_。)
+此外，这对使用 ``"...;"`` 声明的结构没有影响，稍后会详细介绍 `让C编译器填补空白`_。)
 *版本1.12中的新功能:*  在ABI模式中， 你也可以传递 ``pack=n``，整数 ``n`` 必须是2的幂。 则任何字段的对齐限制为 ``n``，否则将大于 ``n``。 传递 ``pack=1`` 相当于传递
 ``packed=True``。 这是为了模拟MSVC编译器中的 ``#pragma pack(n)``。 在Windows上，默认值为 ``pack=8`` (从cffi 1.12开始); 在其他平台上，默认值为 ``pack=None``。
 
@@ -243,7 +243,7 @@ ffi.dlopen(): 以ABI模式加载库
 
 .. _dlopen-note:
 
-注意: 如果无法直接找到库，则来自in-line ABI模式的旧版本的 ``ffi.dlopen()`` 会尝试使用 ``ctypes.util.find_library()``。 更新的r out-of-line ``ffi.dlopen()`` 不再自动执行此操作; 它只是将它接收的参数传递给底层的 ``dlopen()`` 或 ``LoadLibrary()`` 函数。 如果需要，您可以使用 ``ctypes.util.find_library()`` 或任何其他方式查找库的文件名。 这也意味着
+注意: 如果无法直接找到库，则来自in-line ABI模式的旧版本的 ``ffi.dlopen()`` 会尝试使用 ``ctypes.util.find_library()``。 更新的 out-of-line ``ffi.dlopen()`` 不再自动执行此操作; 它只是将它接收的参数传递给底层的 ``dlopen()`` 或 ``LoadLibrary()`` 函数。 如果需要，您可以使用 ``ctypes.util.find_library()`` 或任何其他方式查找库的文件名。 这也意味着
 ``ffi.dlopen(None)`` 不再适用于Windows; 尝试改为
 ``ffi.dlopen(ctypes.util.find_library('c'))``。
 
@@ -298,7 +298,7 @@ C++ (但请注意，仍存在一些已知的C与C ++兼容性问题):
 **ffibuilder.set_source_pkgconfig(module_name, pkgconfig_libs,
 c_header_source, [\*\*keywords...])**:
 
-*版本1.12中的新功能。*  这相当于 ``set_source()``， 但它首先使用列表 ``pkgconfig_libs`` 中给出的包名称调用系统实用程序``pkg-config``。 它收集以这种方式获得的信息，并将其添加到明确提供的
+*版本1.12中的新功能。*  这相当于 ``set_source()``， 但它首先使用列表 ``pkgconfig_libs`` 中给出的包名称调用系统实用程序 ``pkg-config``。 它收集以这种方式获得的信息，并将其添加到明确提供的
 ``**keywords`` (如果有) 中。这也许不应该在Windows上使用。
 
 如果未安装 ``pkg-config`` 程序或不知道所请求的库，则调用将失败并显示 ``cffi.PkgConfigError``。  如果有必要，您可以捕获此错误并尝试直接调用 ``set_source()``。 (理想情况下，如果 ``ffibuilder``
@@ -368,7 +368,7 @@ the_type_name;`` 或等效的 ``typedef double...  the_type_name;``。
 
 在函数参数或返回类型的情况下， 当它是一个简单的整数/浮点类型时， 你可以简单地误判它。 如果你将函数 ``void f(long)`` 误认为是 ``void f(int)``， 它仍然有效 (但你必须使用适合int的参数调用它)。 它的工作原理是因为C编译器会为我们进行转换。 此参数和返回类型的C语言级转换仅适用于常规函数， 而不适用于函数指针类型; 目前，它也不适用于可变函数。
 
-对于更复杂的类型， 您别无选择， 只能精确。 例如， 你不能将 ``int *`` 参数误认为是 ``long *``，或者是全局数组 ``int a[5];`` 误认为 ``long a[5];``。 CFFI认为 `上面列出的所有类型`_视为原始类型  (所以 ``long long a[5];`` 和 ``int64_t a[5]`` 是不同的声明)。 其中的原因在 `关于问题的讨论`__ 中有详细说明。
+对于更复杂的类型， 您别无选择， 只能精确。 例如， 你不能将 ``int *`` 参数误认为是 ``long *``，或者是全局数组 ``int a[5];`` 误认为 ``long a[5];``。 CFFI认为 `上面列出的所有类型`_ 视为原始类型  (所以 ``long long a[5];`` 和 ``int64_t a[5]`` 是不同的声明)。 其中的原因在 `关于问题的讨论`__ 中有详细说明。
 
 .. __: https://bitbucket.org/cffi/cffi/issues/265/cffi-doesnt-allow-creating-pointers-to#comment-28406958
 
@@ -562,7 +562,7 @@ CFFI 1.0是向后兼容的，但考虑转向1.0中的新out-of-line方法仍然�
     ffi.cdef("stuff")
     lib = ffi.verify("real C code")
 
-t然后你应该按照上面的 `out-of-line,
+然后你应该按照上面的 `out-of-line,
 API 模式`__ 中的描述重写它。 它避免了一些导致
 ``ffi.verify()`` 随着时间推移增加一些额外参数的问题。然后查看 `distutils 或 setuptools`__ 段落。 另外，请记住从 ``setup.py`` 中删除 ``ext_package=".."``，这有时需要使用 ``verify()`` 但只是与 ``set_source()`` 产生混淆。
 

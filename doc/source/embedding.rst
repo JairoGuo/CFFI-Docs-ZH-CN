@@ -230,8 +230,7 @@
   ``DYLD_LIBRARY_PATH=/some/path/to/libpypy``。
 
 * 如果使用内部硬编码的路径编译 ``libmy_plugin.so``，则可以避免 ``LD_LIBRARY_PATH`` 问题。  在Linux中，这是由 ``gcc -Wl,-rpath=/some/path`` 完成的。 你可以把这个选项放在 ``ffibuilder.set_source("my_plugin", ...,
-  extra_link_args=['-Wl,-rpath=/some/path/to/libpypy'])`` 中。 该路径可以以 ``$ORIGIN`` 开头，表示"``libmy_plugin.so`` 所在的目录"。 然后，您可以指定相对于该位置的路径，例如 ``extra_link_args=['-Wl,-rpath=$ORIGIN/../venv/bin']``。
-  U使用se ``ldd libmy_plugin.so`` 查看 ``$ORIGIN`` 扩展后当前编译的路径。)
+  extra_link_args=['-Wl,-rpath=/some/path/to/libpypy'])`` 中。 该路径可以以 ``$ORIGIN`` 开头，表示"``libmy_plugin.so`` 所在的目录"。 然后，您可以指定相对于该位置的路径，例如 ``extra_link_args=['-Wl,-rpath=$ORIGIN/../venv/bin']``。 使用 ``ldd libmy_plugin.so`` 查看 ``$ORIGIN`` 扩展后当前编译的路径。)
 
   在此之后，您不再需要 ``LD_LIBRARY_PATH`` 来在运行时找到
   ``libpython27.so`` 或 ``libpypy-c.so``。从理论上讲，它还应该包括对主要程序的 ``gcc`` 调用。 如果rpath以 ``$ORIGIN`` 开头，我在Linux上没有 ``LD_LIBRARY_PATH`` 就无法很好的使用 ``gcc`` 
