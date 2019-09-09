@@ -5,7 +5,7 @@
 .. contents::
    
 
-第一部分介绍了一个使用CFFI从Python编译共享对象(DLL)中调用C函数的简单工作示例。 CFFI非常灵活，涵盖了第二部分中介绍的其他几个用例。 第三部分展示了如何将Python函数导出到嵌入在C或C++应用程序中的Python解释器。 最后两节深入探讨了CFFI库。
+第一部分介绍了一个使用CFFI从Python编译动态库(DLL)中调用C函数的简单工作示例。 CFFI非常灵活，涵盖了第二部分中介绍的其他几个用例。 第三部分展示了如何将Python函数导出到嵌入在C或C++应用程序中的Python解释器。 最后两节深入探讨了CFFI库。
 
 确保你有 `安装cffi`__.
 
@@ -18,7 +18,7 @@
 主要使用方式
 ------------------
 
-使用CFFI的主要方式是作为一些已经编译的共享对象的接口，这是由其他方法提供的。  想象一下，您有一个系统安装的共享对象名为 ``piapprox.dll`` (Windows) 或
+使用CFFI的主要方式是作为一些已经编译的动态库的接口，这是由其他方法提供的。  想象一下，您有一个系统安装的动态库名为 ``piapprox.dll`` (Windows) 或
 ``libpiapprox.so`` (Linux和其它) 或 ``libpiapprox.dylib`` (OS X)，导出函数 ``float pi_approx(int n);`` 在给定迭代次数的情况下计算pi的一些近似值。 你想从Python调用这个函数。 请注意，此方法与静态库 ``piapprox.lib`` (Windows) 或 ``libpiapprox.a`` 同样适用。
 
 创建文件 ``piapprox_build.py``:
