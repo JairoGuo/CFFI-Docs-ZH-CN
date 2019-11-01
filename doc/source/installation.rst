@@ -40,13 +40,13 @@ CFFI的核心速度优于ctypes，如果使用1.0之后的功能，则意味着�
 
 * https://pypi.python.org/pypi/cffi
 
-* 校验 "source" 包 version 1.12.3:
+* 校验 "source" 包 version 1.13.1:
 
-   - MD5: 35ad1f9e1003cac9404c1493eb10d7f5
+    - MD5: 824ad9f228fbc6ce203c334e2ff4ab8f
 
-   - SHA: ccc49cf31bc3f4248f45b9ec83685e4e8090a9fa
+   - SHA: 678dad3a3102ebcbeab8f5f132968afa444f6a54
 
-   - SHA256: 041c81822e9f84b1d9c401182e174996f0bae9991f33725d059b771744290774
+   - SHA256: 558b3afef987cf4b17abd849e7bedf64ee12b28175d564d05b628a0f9355599b
 
 * 或者从 `Bitbucket page`_ 页面获取最新版本:
   ``hg clone https://bitbucket.org/cffi/cffi``
