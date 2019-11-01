@@ -2,6 +2,47 @@
 有什么新变化
 ======================
 
+v1.13.1
+=======
+
+* deprecate the way to declare in ``cdef()`` a global variable with only
+  ``void *foo;``.  You should always use a storage class, like ``extern void
+  *foo;`` or maybe ``static void *foo;``.  These are all equivalent for
+  the purposes of ``cdef()``, but the reason for deprecating the bare version
+  is that (as far as I know) it would always be mistake in a real C header.
+
+* fix the regression ``RuntimeError: found a situation in which we try
+  to build a type recursively`` (`issue #429`_).
+
+* fixed `issue #427`_ where a multithreading mistake in the embedding logic
+  initialization code would cause deadlocks on CPython 3.7.
+
+.. _`issue #429`: https://bitbucket.org/cffi/cffi/issues/429/
+.. _`issue #427`: https://bitbucket.org/cffi/cffi/issues/427/
+
+
+v1.13
+=====
+
+* ``ffi.from_buffer("type *", ..)`` is now supported, in addition to
+  ``"type[]"``.  You can then write ``p.field`` to access the items, instead
+  of only ``p[0].field``.  Be careful that no bounds checking is performed, so
+  ``p[n]`` might access data out of bounds.
+
+* fix for structs containing unnamed bitfields like ``int : 1;``.
+
+* when calling cdata of "function pointer" type, give a RuntimeError instead
+  of a crash if the pointer happens to be NULL
+
+* support some more binary operations between constants in enum definitions
+  (PR #96)
+
+* silence a warning incorrectly emitted if you use a quote in a preprocessor
+  line
+
+* detect a corner case that would throw the C code into an infinite
+  recursion, with ``ffi.cdef("""struct X { void(*fnptr)(struct X); };""")``
+
 
 v1.12.3
 =======
