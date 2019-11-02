@@ -5,17 +5,14 @@
 v1.13.1
 =======
 
-* deprecate the way to declare in ``cdef()`` a global variable with only
-  ``void *foo;``.  You should always use a storage class, like ``extern void
-  *foo;`` or maybe ``static void *foo;``.  These are all equivalent for
-  the purposes of ``cdef()``, but the reason for deprecating the bare version
-  is that (as far as I know) it would always be mistake in a real C header.
+* 弃用在 ``cdef()`` 中声明仅具有
+  ``void *foo;`` 的全局变量的方式。  您应该始终使用存储类，例如 ``extern void
+  *foo;`` 或 ``static void *foo;``。  这些对于 ``cdef()`` 都是等效的，但是不推荐使用裸版本的原因是(据我所知)在真正的C头文件中总是错误的。
 
-* fix the regression ``RuntimeError: found a situation in which we try
+* 修复 ``RuntimeError: found a situation in which we try
   to build a type recursively`` (`issue #429`_).
 
-* fixed `issue #427`_ where a multithreading mistake in the embedding logic
-  initialization code would cause deadlocks on CPython 3.7.
+* 修复了 `issue #427`_ ，其中嵌入逻辑初始化代码中的多线程错误会导致CPython 3.7上死锁。
 
 .. _`issue #429`: https://bitbucket.org/cffi/cffi/issues/429/
 .. _`issue #427`: https://bitbucket.org/cffi/cffi/issues/427/
@@ -24,24 +21,18 @@ v1.13.1
 v1.13
 =====
 
-* ``ffi.from_buffer("type *", ..)`` is now supported, in addition to
-  ``"type[]"``.  You can then write ``p.field`` to access the items, instead
-  of only ``p[0].field``.  Be careful that no bounds checking is performed, so
-  ``p[n]`` might access data out of bounds.
+* 除了 ``"type[]"`` 现在还支持 ``ffi.from_buffer("type *", ..)``。  然后，您可以编写 ``p.field`` 来访问项目，而不仅仅是 ``p[0].field``。    注意不要执行边界检查，因为
+  ``p[n]`` 可能会超出范围访问数据。
 
-* fix for structs containing unnamed bitfields like ``int : 1;``.
+* 修复包含未命名位域的结构，像 ``int : 1;``。
 
-* when calling cdata of "function pointer" type, give a RuntimeError instead
-  of a crash if the pointer happens to be NULL
+* 调用“函数指针”类型的cdata时，如果指针碰巧为NULL，则给出RuntimeError而不是崩溃
 
-* support some more binary operations between constants in enum definitions
-  (PR #96)
+* 支持枚举定义中的常量之间的更多二进制操作(PR #96)
 
-* silence a warning incorrectly emitted if you use a quote in a preprocessor
-  line
+* 如果在预处理器行中使用引号，则使错误发出的警告关闭
 
-* detect a corner case that would throw the C code into an infinite
-  recursion, with ``ffi.cdef("""struct X { void(*fnptr)(struct X); };""")``
+* 使用 ``ffi.cdef("""struct X { void(*fnptr)(struct X); };""")`` 检测一个极端情况，该情况会将C语言代码进行无限递归
 
 
 v1.12.3
