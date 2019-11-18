@@ -2,6 +2,14 @@
 有什么新变化
 ======================
 
+v1.13.2
+=======
+
+* 重新发布，因为Linux wheels附带了libffi的附加版本，该版本非常旧，有缺陷(`issue #432`_).
+
+.. _`issue #432`: https://bitbucket.org/cffi/cffi/issues/432/
+
+
 v1.13.1
 =======
 
