@@ -2,6 +2,25 @@
 有什么新变化
 ======================
 
+
+v1.14
+=====
+
+* 现在可以使用已打开的C语言库的句柄(如 ``void *``) 调用 ``ffi.dlopen()`` 。
+
+* 仅CPython: 修复了
+  ``lib.myfunc([large list])`` 之类的调用的堆栈溢出问题。  例如，如果函数声明为带
+  ``float *`` 参数，则该数组会临时转换为C语言的float数组。 但是，无论大小如何，此临时存储使用 ``alloca()`` 的代码。 现在，此问题已解决。
+
+  该修复程序涉及所有模式: in-line/out-of-line API/ABI.  还要注意，您的API模式C语言扩展模块需要使用cffi 1.14重新生成才能获得修复; 即对于API模式，此修复程序位于生成的C语言源代码中。
+  (从cffi 1.14生成的C源代码也可以在具有旧版本cffi的不同环境中运行时工作。 同样，此更改对PyPy而言也没有区别。)
+
+  作为一种适用于所有版本的cffi的解决方法，您可以编写
+  ``lib.myfunc(ffi.new("float[]", [large list]))``, 它是等效的，但明确地将中间数组构建为堆上的常规Python对象。
+
+* 修复了CPython 3.x上 ``ffi.getwinerror()`` 内部的内存泄漏。
+
+
 v1.13.2
 =======
 
@@ -67,7 +86,7 @@ v1.12.1
 
   就像之前一样，`问题 #350`_ 提到了一个解决方法，如果您仍然需要 
   ``Py_LIMITED_API`` 标志，并且您不关心virtualenv，*或* 者您确定您的模块不会在CPython <= 3.4上使用: 将 
-  ``define_macros=[("Py_LIMITED_API", None)]`` 传递给
+  ``define_macros=[("Py_LIMITED_API", None)]`` 作为关键字传递给
   ``ffibuilder.set_source()`` 调用。
 
 
@@ -130,11 +149,11 @@ v1.11.5
 * CPython 3 on Windows: we no longer compile with ``Py_LIMITED_API``
   by default because such modules cannot be used with virtualenv.
   `问题 #350`_ mentions a workaround if you still want that and are not
-  concerned about virtualenv: pass a ``define_macros=[("Py_LIMITED_API",
-  None)]`` to the ``ffibuilder.set_source()`` call.
+  concerned about virtualenv: pass ``define_macros=[("Py_LIMITED_API",
+  None)]`` as a keyword to the ``ffibuilder.set_source()`` call.
 
 .. _`Issue #345`: https://bitbucket.org/cffi/cffi/issues/345/
-.. _`问题 #350`: https://bitbucket.org/cffi/cffi/issues/350/
+.. _`Issue #350`: https://bitbucket.org/cffi/cffi/issues/350/
 .. _`Issue #358`: https://bitbucket.org/cffi/cffi/issues/358/
 .. _`Issue #357`: https://bitbucket.org/cffi/cffi/issues/357/
 
