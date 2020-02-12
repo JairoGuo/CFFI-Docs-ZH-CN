@@ -42,11 +42,11 @@ CFFI的核心速度优于ctypes，如果使用1.0之后的功能，则意味着�
 
 * 校验 "source" 包 version 1.13.2:
 
-    - MD5: 652203cf99faa254efff7fab23c2f3a2
+   - MD5: 74845f8d2b7b583dd9a3574f402edf39
 
-   - SHA: ad94c1b64570ec3016a945d4b226d527de81f9b9
+   - SHA: 2a8f05a7d51d77ef1e641cb359a54e4d8fa019cb
 
-   - SHA256: 599a1e8ff057ac530c9ad1778293c665cb81a791421f46922d80a86473c13346
+   - SHA256: 2d384f4a127a15ba701207f7639d94106693b6cd64173d6c8988e2c25f3ac2b6
 
 * 或者从 `Bitbucket page`_ 页面获取最新版本:
   ``hg clone https://bitbucket.org/cffi/cffi``
