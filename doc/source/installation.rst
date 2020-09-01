@@ -40,16 +40,18 @@ CFFI的核心速度优于ctypes，如果使用1.0之后的功能，则意味着�
 
 * https://pypi.python.org/pypi/cffi
 
-* 校验 "source" 包 version 1.13.2:
+* 校验 "source" 包 version 1.14.1:
 
-   - MD5: 74845f8d2b7b583dd9a3574f402edf39
+   - MD5: 1dac3d20d5602829dfaa7026658b7795
 
-   - SHA: 2a8f05a7d51d77ef1e641cb359a54e4d8fa019cb
+   - SHA: 7b067fdb46d184f6bfdadc11732df6f0340e553d   
 
-   - SHA256: 2d384f4a127a15ba701207f7639d94106693b6cd64173d6c8988e2c25f3ac2b6
+   - SHA256: b2a2b0d276a136146e012154baefaea2758ef1f56ae9f4e01c612b0831e0bd2f
+   
+* 或者从 `Heptapod page`_ 页面获取最新版本:
+  ``hg clone https://foss.heptapod.net/pypy/cffi``
 
-* 或者从 `Bitbucket page`_ 页面获取最新版本:
-  ``hg clone https://bitbucket.org/cffi/cffi``
+
 
 * ``python setup.py install`` 或 ``python setup_base.py install``
   (在Linux 或 Windows上应该开箱即用; 请参阅
@@ -58,7 +60,8 @@ CFFI的核心速度优于ctypes，如果使用1.0之后的功能，则意味着�
 * 运行测试: ``py.test  c/  testing/`` (如果你还没有安装cffi，首先你需要 ``python setup_base.py build_ext -f
   -i``)
 
-.. _`Bitbucket page`: https://bitbucket.org/cffi/cffi
+
+.. _`Heptapod page`: https://foss.heptapod.net/pypy/cffi
 
 演示:
 

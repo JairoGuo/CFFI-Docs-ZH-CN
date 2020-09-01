@@ -310,7 +310,7 @@ API 模式，调用C语言源码而不是编译库
        from _pi.lib import pi_approx
    
        approx = pi_approx(10)
-       assert str(pi_approximation).startswith("3.")
+       assert str(approx).startswith("3.")
    
        approx = pi_approx(10000)
        assert str(approx).startswith("3.1")  
