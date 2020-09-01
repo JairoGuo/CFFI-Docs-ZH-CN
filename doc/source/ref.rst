@@ -275,8 +275,7 @@ ffi.gc()
 请注意，如果您有多个 ``ffi.gc()`` 对象，则将以随机顺序调用相应的析构函数。 如果您需要特定顺序，参见 `问题 340`__ 的讨论。
 
 .. __: http://bugs.python.org/issue31105
-.. __: https://bitbucket.org/cffi/cffi/issues/340/resources-release-issues
-
+.. __: https://foss.heptapod.net/pypy/cffi/-/issues/340
 
 .. _ffi-new-handle:
 .. _ffi-from-handle:
@@ -459,8 +458,7 @@ out-of-line API 模式，即使存在多个子解释器，也只调用一次 ``f
            raise IndexError("index too large!")
        ...
 
-.. __: https://bitbucket.org/cffi/cffi/issues/233/
-
+.. __: https://foss.heptapod.net/pypy/cffi/-/issues/233
 
 .. _ffi-getctype:
 .. _ffi-list-types:

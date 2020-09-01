@@ -3,6 +3,17 @@
 ======================
 
 
+v1.14.2
+=======
+
+* Windows上的CPython 3： 我们再次尝试默认情况下使用 ``Py_LIMITED_API`` 进行编译。 
+  如果使用CPython 3.4运行编译，则不会添加此标志，因为它仅适用于CPython >= 3.5，但是到目前为止，这个版本的Python已经很老了（并且我们不再为它分发cffi wheel）。
+
+  这可能需要您升级 ``virtualenv`` (需要版本16或更高版本) 或者至少手动将 ``python3.dll`` 复制到现有的virtualenvs中。 要使用cffi模块分发 wheels，您可能还需要将 ``wheel`` 升级到刚发布的版本 0.35。
+
+  您可以通过调用 ``ffi.set_source(..., py_limited_api=False)`` 手动禁用 ``Py_LIMITED_API`` 。
+
+
 v1.14.1
 =======
 
