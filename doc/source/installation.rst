@@ -40,25 +40,28 @@ CFFI的核心速度优于ctypes，如果使用1.0之后的功能，则意味着�
 
 * https://pypi.python.org/pypi/cffi
 
-* 校验 "source" 包 version 1.13.2:
+* 校验 "source" 包 version 1.14.2:
 
-   - MD5: 74845f8d2b7b583dd9a3574f402edf39
+   - MD5: 3cc2f1daf62dd66eda79b4d6281cebfc   
 
-   - SHA: 2a8f05a7d51d77ef1e641cb359a54e4d8fa019cb
+   - SHA: 6d2f277d1f1e3d9a09fc5df4bfcea63229e8e8d1
 
-   - SHA256: 2d384f4a127a15ba701207f7639d94106693b6cd64173d6c8988e2c25f3ac2b6
+   - SHA256: ae8f34d50af2c2154035984b8b5fc5d9ed63f32fe615646ab435b05b132ca91b
+   
+* 或者从 `Heptapod page`_ 页面获取最新版本:
+  ``hg clone https://foss.heptapod.net/pypy/cffi``
 
-* 或者从 `Bitbucket page`_ 页面获取最新版本:
-  ``hg clone https://bitbucket.org/cffi/cffi``
+
 
 * ``python setup.py install`` 或 ``python setup_base.py install``
   (在Linux 或 Windows上应该开箱即用; 请参阅
-  `MacOS X`_ 或 `Windows 64`_.)
+  `MacOS X`_.)
 
 * 运行测试: ``py.test  c/  testing/`` (如果你还没有安装cffi，首先你需要 ``python setup_base.py build_ext -f
   -i``)
 
-.. _`Bitbucket page`: https://bitbucket.org/cffi/cffi
+
+.. _`Heptapod page`: https://foss.heptapod.net/pypy/cffi
 
 演示:
 
@@ -67,9 +70,10 @@ CFFI的核心速度优于ctypes，如果使用1.0之后的功能，则意味着�
 * 下面的文档可能在细节上是简略的; 目前测试给出了最终的参考，特别是
   `testing/cffi1/test_verify1.py`_ 和 `testing/cffi0/backend_tests.py`_.
 
-.. _`demo`: https://bitbucket.org/cffi/cffi/src/default/demo
-.. _`testing/cffi1/test_verify1.py`: https://bitbucket.org/cffi/cffi/src/default/testing/cffi1/test_verify1.py
-.. _`testing/cffi0/backend_tests.py`: https://bitbucket.org/cffi/cffi/src/default/testing/cffi0/backend_tests.py
+.. _`demo`: https://foss.heptapod.net/pypy/cffi/-/tree/branch/default/demo
+.. _`testing/cffi1/test_verify1.py`: https://foss.heptapod.net/pypy/cffi/-/blob/branch/default/testing/cffi1/test_verify1.py
+.. _`testing/cffi0/backend_tests.py`: https://foss.heptapod.net/pypy/cffi/-/blob/branch/default/testing/cffi0/backend_tests.py
+
 
 
 特定于平台的说明
@@ -115,10 +119,10 @@ MacOS X
 .. _此处: http://superuser.com/questions/259278/python-2-6-1-pycrypto-2-3-pypi-package-broken-pipe-during-build
 
 
-Windows (常规 32-bit)
-++++++++++++++++++++++++
+Windows (32/64-bit)
++++++++++++++++++++
 
-Win32工作并至少在每个正式版本中进行测试。
+Win32和Win64工作并至少在每个正式版本中进行测试。
 
 与Python 2.7兼容的推荐C编译器是这个:
 http://www.microsoft.com/en-us/download/details.aspx?id=44266
@@ -127,17 +131,6 @@ Python 2.7上存在distutils的已知问题，如中所述 https://bugs.python.o
 
 适用于Python 3.4及更高版本:
 https://www.visualstudio.com/en-us/downloads/visual-studio-2015-ctp-vs
-
-
-Windows 64
-++++++++++
-
-Win64接受了非常基本的测试，我们在cffi 0.7中应用了一些基本的修复。 上面的评论也适用于Windows 64上的Python 2.7。 请报告任何其他问题。
-
-请注意，这只是关于在64位操作系统上运行64位版本的Python。 如果您正在使用32位版本 (显然是常见的情况)，你是使用Win32那么就我们关心Win32。
-
-.. _`issue 9`: https://bitbucket.org/cffi/cffi/issue/9
-.. _`Python issue 7546`: http://bugs.python.org/issue7546
 
 
 Linux and OS/X: UCS2 与 UCS4

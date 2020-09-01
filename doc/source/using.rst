@@ -606,7 +606,7 @@ CFFI通过将 ``my_callback`` 定义为静态C语言函数来实现此功能，�
 
 The ``extern "Python"`` 函数现在不能是可变参数函数。 这可以在将来实施。 (这个 `演示`__ 展示了如何做到这一点，但它有点冗长。)
 
-.. __: https://bitbucket.org/cffi/cffi/src/default/demo/extern_python_varargs.py
+.. __: https://foss.heptapod.net/pypy/cffi/-/blob/branch/default/demo/extern_python_varargs.py
 
 每个对应的Python回调函数都是使用
 ``@ffi.def_extern()`` 装饰器定义的。 编写此函数时要小心: 如果它引发异常，或尝试返回错误类型的对象，那么异常无法传播。 而是将异常打印到stderr，并使C语言级回调返回默认值。 这可以通过 ``error`` 和
@@ -676,7 +676,7 @@ ffi.callback() 结果是相同的。
     要在受影响的平台上一劳永逸地解决问题，您需要重构所涉及的代码，以便它不再使用 ``ffi.callback()``.
 
 .. __: https://github.com/pyca/pyopenssl/issues/596
-.. __: https://bitbucket.org/cffi/cffi/issues/391/
+.. __: https://foss.heptapod.net/pypy/cffi/-/issues/391
 .. __: https://bugzilla.redhat.com/show_bug.cgi?id=1249685
 
 警告: 与ffi.new()一样，ffi.callback()返回一个拥有其C语言数据所有权的cdata。 (在这种情况下，必要的C语言数据包含用于执行回调的libffi数据结构。)  这意味着只要此cdata对象处于活动状态，就只能调用回调。

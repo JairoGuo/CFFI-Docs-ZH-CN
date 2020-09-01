@@ -373,8 +373,7 @@ the_type_name;`` 或等效的 ``typedef double...  the_type_name;``。
 
 对于更复杂的类型， 您别无选择， 只能精确。 例如， 你不能将 ``int *`` 参数误认为是 ``long *``，或者是全局数组 ``extern int a[5];`` 误认为 ``extern long a[5];``。 CFFI认为 `上面列出的所有类型`_ 视为原始类型  (所以 ``extern long long a[5];`` 和 ``extern int64_t a[5]`` 是不同的声明)。 其中的原因在 `关于问题的讨论`__ 中有详细说明。
 
-.. __: https://bitbucket.org/cffi/cffi/issues/265/cffi-doesnt-allow-creating-pointers-to#comment-28406958
-
+.. __: https://foss.heptapod.net/pypy/cffi/-/issues/265#note_50393
 
 ffibuilder.compile() 等: 编译out-of-line模块
 --------------------------------------------------------

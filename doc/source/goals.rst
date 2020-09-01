@@ -52,5 +52,5 @@
 
 --- 本文档未获得文档翻译版权，仅供学习参考，如有侵权，则立即删除
 
-.. _`问题跟踪器`: https://bitbucket.org/cffi/cffi/issues
+.. _`问题跟踪器`: https://foss.heptapod.net/pypy/cffi/issues
 .. _`邮件列表`: https://groups.google.com/forum/#!forum/python-cffi

@@ -246,7 +246,7 @@
   `问题 #264`__。  解决方法是首先调用
   ``dlopen("libpythonX.Y.so", RTLD_LAZY|RTLD_GLOBAL)``，这将强制首先加载 ``libpythonX.Y.so``。
 
-.. __: https://bitbucket.org/cffi/cffi/issues/264/
+.. __: https://foss.heptapod.net/pypy/cffi/-/issues/264
 
 
 使用多个CFFI制作的DLL

@@ -3,6 +3,35 @@
 ======================
 
 
+v1.14.2
+=======
+
+* Windows上的CPython 3： 我们再次尝试默认情况下使用 ``Py_LIMITED_API`` 进行编译。 
+  如果使用CPython 3.4运行编译，则不会添加此标志，因为它仅适用于CPython >= 3.5，但是到目前为止，这个版本的Python已经很老了（并且我们不再为它分发cffi wheel）。
+
+  这可能需要您升级 ``virtualenv`` (需要版本16或更高版本) 或者至少手动将 ``python3.dll`` 复制到现有的virtualenvs中。 要使用cffi模块分发 wheels，您可能还需要将 ``wheel`` 升级到刚发布的版本 0.35。
+
+  您可以通过调用 ``ffi.set_source(..., py_limited_api=False)`` 手动禁用 ``Py_LIMITED_API`` 。
+
+
+v1.14.1
+=======
+
+* CFFI源代码现在托管在 `hosted on Heptapod`_ 上。
+
+* 改进了对 ``typedef int my_array_t[...];`` 的支持，在API模式下有一个显式的点-点-点 (`issue #453`_)
+
+* Windows（32位和64位）：针对返回结构的函数的ABI模式调用的多项修复。
+
+* 在aarch64上对MacOS 11的实验支持。
+
+* 以及其他一些小的更改和错误修复。
+
+.. _`hosted on Heptapod`: https://foss.heptapod.net/pypy/cffi/
+.. _`issue #453`: https://foss.heptapod.net/pypy/cffi/issues/453
+
+
+
 v1.14
 =====
 
@@ -62,8 +91,11 @@ v1.13
 * 使用 ``ffi.cdef("""struct X { void(*fnptr)(struct X); };""")`` 检测一个极端情况，该情况会将C语言代码进行无限递归
 
 
+旧版本
+==============
+
 v1.12.3
-=======
+-------
 
 * 修复以var大小数组结尾的嵌套结构类型（＃405）。
 
@@ -73,13 +105,13 @@ v1.12.3
 
 
 v1.12.2
-=======
+-------
 
 * 添加了临时解决方法以在CPython 3.8.0a2上进行编译。
 
 
 v1.12.1
-=======
+-------
 
 * Windows上的CPython 3：
   我们再次默认不再使用 ``Py_LIMITED_API`` 进行编译，因为这些模块 *仍然* 无法与virtualenv一起使用。问题是它在CPython <= 3.4中不起作用，并且由于技术原因，我们无法根据Python的版本自动启用此标志。 
@@ -91,7 +123,7 @@ v1.12.1
 
 
 v1.12
-=====
+-------
 
 * `直接支持pkg-config`__.
 
@@ -118,8 +150,6 @@ v1.12
 .. _`问题 #362`: https://bitbucket.org/cffi/cffi/issues/362/
 
 
-旧版本
-==============
 
 **注：本文档不对旧版本文档的更新内容进行翻译，如有需要，阅读下面内容或自行翻译**
 
