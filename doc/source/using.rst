@@ -252,7 +252,7 @@ Python 3支持
    from cffi import FFI
    ffi = FFI()
    ffi.cdef("""
-      int main_like(int argv, char *argv[]);
+      int main_like(int argc, char *argv[]);
    """)
    lib = ffi.dlopen("some_library.so")
 
